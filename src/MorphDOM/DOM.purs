@@ -57,68 +57,134 @@ text str = liftWidget $ display $ [Content [] str]
 type El
   = forall m a. MultiAlternative m => ShiftMap (Widget HTML) m => Array (Props Prop a) -> Array (m a) -> m a
 
+type El'
+  = forall m a. MultiAlternative m => ShiftMap (Widget HTML) m => Array (m a) -> m a
+
 type Ell =
   forall m a. LiftWidget (Array VNode) m => Array (Props Prop a) -> m a
+
+type Ell'
+  = forall m a. LiftWidget HTML m => m a
 
 html :: El
 html = el' $ Node "html"
 
+html' :: El'
+html' = html []
+
 style :: El
 style = el' $ Node "style"
+
+style' :: El'
+style' = style []
 
 script :: El
 script = el' $ Node "script"
 
+script' :: El'
+script' = script []
+
 a :: El
 a = el' $ Node "a"
+
+a' :: El'
+a' = a []
 
 div :: El
 div = el' $ Node "div"
 
+div' :: El'
+div' = div []
+
 button :: El
 button = el' $ Node "button"
+
+button' :: El'
+button' = button []
 
 body :: El
 body = el' $ Node "body"
 
+body' :: El'
+body' = body []
+
 head :: El
 head = el' $ Node "head"
+
+head' :: El'
+head' = head []
 
 meta :: Ell
 meta = elLeaf $ Leaf "meta"
 
+meta' :: Ell'
+meta' = meta []
+
 form :: El
 form = el' $ Node "form"
+
+form' :: El'
+form' = form []
 
 h1 :: El
 h1 = el' $ Node "h1"
 
+h1' :: El'
+h1' = h1 []
+
 h2 :: El
 h2 = el' $ Node "h2"
+
+h2' :: El'
+h2' = h2 []
 
 h3 :: El
 h3 = el' $ Node "h3"
 
+h3' :: El'
+h3' = h3 []
+
 h4 :: El
 h4 = el' $ Node "h4"
+
+h4' :: El'
+h4' = h4 []
 
 h5 :: El
 h5 = el' $ Node "h5"
 
+h5' :: El'
+h5' = h5 []
+
 h6 :: El
 h6 = el' $ Node "h6"
+
+h6' :: El'
+h6' = h6 []
 
 label :: El
 label = el' $ Node "label"
 
+label' :: El'
+label' = label []
+
 img :: Ell
 img = elLeaf $ Leaf "img"
+
+img' :: Ell'
+img' = img []
 
 input :: Ell
 input = elLeaf $ Leaf "input"
 
+input' :: Ell'
+input' = input []
+
 p :: El
 p = el' $ Node "p"
+
+p' :: El'
+p' = p []
 
 empty :: Ell
 empty = elLeaf $ \ _ -> Empty
